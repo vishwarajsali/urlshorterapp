@@ -11,21 +11,21 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('./public'));
 
-// app.post('/url/:id', (req, res)=> {
-//     //TODO: Get the specific URL 
+app.post('/url/:id', (req, res)=> {
+    //TODO: Get the specific URL 
     
-// })
+})
 
-// app.get('/:id', (req, res) => {
-//     //TODO: redirect to URL
+app.get('/:id', (req, res) => {
+    //TODO: redirect to URL
 
-// });
+});
 
 
-// app.post('/url', (req, res)=> {
-//     //TODO: Create a short URL 
+app.post('/url', (req, res)=> {
+    //TODO: Create a short URL 
 
-// })
+})
 
 const port = process.env.PORT || 1337;
 
