@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('./public'));
 
+
 app.post('/url/:id', (req, res)=> {
     //TODO: Get the specific URL 
     
@@ -24,7 +25,9 @@ app.get('/:id', (req, res) => {
 
 app.post('/url', (req, res)=> {
     //TODO: Create a short URL 
-
+    res.json({
+        messagag: "HI"
+    })
 })
 
 const port = process.env.PORT || 1337;
