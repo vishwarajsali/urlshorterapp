@@ -27,12 +27,12 @@ app.use(express.static('./public'));
 //     //TODO: redirect to URL
 
 // });
-// app.get('/url', (req, res)=> {
-//     //TODO: Create a short URL 
-//     res.json({
-//         messagag: "HI"
-//     })
-// })
+app.get('/url', (req, res)=> {
+    //TODO: Create a short URL 
+    res.json({
+        messagag: "HI"
+    })
+})
 
 // app.post('/url', (req, res)=> {
 //     //TODO: Create a short URL 
