@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const db = monk(process.env.MONGO_URI)
 const urls = db.get('urls');
-urls.createIndex('name')
+urls.createIndex({slug : 1} , {unique: true})
 
 const app = express();
 
@@ -26,10 +26,22 @@ app.use(express.static('./public'));
 
 // })
 
-// app.get('/:id', (req, res) => {
-//     //TODO: redirect to URL
+app.get('/:id', async (req, res, next) => {
+    //TODO: redirect to URL
+    const {id: slug} = req.params;
 
-// });
+    try {
+        const url = await urls.findOne({slug});
+        if(url){
+            res.redirect(url.url)
+        }
+        res.redirect(`/?error=${slug} Not Found`)
+    } catch (error) {
+        
+        res.redirect(`/?error=Link Not Found`)
+
+    }
+});
 
 const schema = yup.object().shape({
     slug: yup.string().trim().matches(/[\w\-]/i),
