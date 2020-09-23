@@ -1,4 +1,3 @@
-const { request } = require("express");
 
 const app = new Vue({
   el: '#app',
