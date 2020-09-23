@@ -27,6 +27,8 @@ app.use(express.static('./public'));
 // })
 
 app.get('/:id', async (req, res, next) => {
+
+    console.log(request.url);
     //TODO: redirect to URL
     const {id: slug} = req.params;
 
