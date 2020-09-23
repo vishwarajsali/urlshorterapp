@@ -8,7 +8,7 @@ const { nanoid } = require('nanoid')
 
 require('dotenv').config();
 
-const db = monk("mongodb+srv://vish:Vish@123@cluster0.ix80s.mongodb.net/URLDB?retryWrites=true&w=majority")
+const db = monk(process.env.MONGO_URI)
 const urls = db.get('urls');
 urls.createIndex({slug : 1} , {unique: true})
 
@@ -27,7 +27,6 @@ app.use(express.static('./public'));
 // })
 
 app.get('/:id', async (req, res, next) => {
-
     //TODO: redirect to URL
     const {id: slug} = req.params;
 
@@ -43,17 +42,6 @@ app.get('/:id', async (req, res, next) => {
 
     }
 });
-
-app.get('/url', async (req, res, next) => {
-    
-    //TODO: redirect to URL 
- 
-    const existing = await urls.find();
-    console.log(existing);
-    res.json(existing)
-       
-});
-
 
 const schema = yup.object().shape({
     slug: yup.string().trim().matches(/[\w\-]/i),

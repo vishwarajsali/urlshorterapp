@@ -1,8 +1,4 @@
-const { request } = require("express");
-
-console.log(request.url);
 const app = new Vue({
-
   el: '#app',
   data: {
     url: '',
@@ -12,10 +8,10 @@ const app = new Vue({
     created: null,
   },
   methods: {
-
     async createUrl() {
+      console.log(window.location.href);
       this.error = '';
-      const response = await fetch('https://url.vishwaraj.dev/url', {
+      const response = await fetch(`${window.location.href}url`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
@@ -28,7 +24,7 @@ const app = new Vue({
       if (response.ok) {
         const result = await response.json();
         this.formVisible = false;
-        this.created = `https://url.vishwaraj.dev/${result.slug}`;
+        this.created = `${window.location.href}${result.slug}`;
       } else if (response.status === 429) {
         this.error = 'You are sending too many requests. Try again in 30 seconds.';
       } else {
