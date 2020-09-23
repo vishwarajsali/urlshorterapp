@@ -4,3 +4,4 @@ npm-debug.log
 .env
 .DS_Store
 .vercel
+MONGO_URI = "mongodb+srv://vish:Vish@123@cluster0.ix80s.mongodb.net/URLDB?retryWrites=true&w=majority"

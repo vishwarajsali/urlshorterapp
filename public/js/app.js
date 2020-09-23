@@ -1,6 +1,8 @@
 const { request } = require("express");
 
+console.log(request.url);
 const app = new Vue({
+
   el: '#app',
   data: {
     url: '',
@@ -10,9 +12,9 @@ const app = new Vue({
     created: null,
   },
   methods: {
+
     async createUrl() {
       this.error = '';
-      console.log(request.url);
       const response = await fetch('https://url.vishwaraj.dev/url', {
         method: 'POST',
         headers: {
