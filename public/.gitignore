@@ -1,1 +1,3 @@
 .vercel
+
+mongodb+srv://vish:Vish@123@cluster0.ix80s.mongodb.net/URLDB?retryWrites=true&w=majority
